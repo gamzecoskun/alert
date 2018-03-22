@@ -59,6 +59,6 @@ class Alert extends \yii\db\ActiveRecord
      */
     public function getData()
     {
-        return $this->hasMany(SampleData::className(), ['alert_id' => 'id']);
+        return $this->hasMany(AlertData::className(), ['alert_id' => 'id']);
     }
 }

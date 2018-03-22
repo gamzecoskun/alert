@@ -1,12 +1,12 @@
 <?php
 
-namespace kouosl\sample\controllers\backend;
+namespace kouosl\alert\controllers\backend;
 
-use kouosl\sample\models\SampleData;
-use kouosl\sample\models\UploadImage;
+use kouosl\alert\models\AlertData;
+use kouosl\alert\models\UploadImage;
 use Yii;
-use kouosl\sample\models\Samples;
-use kouosl\sample\models\SamplesSearch;
+use kouosl\alert\models\Alert;
+use kouosl\alert\models\AlertSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UnauthorizedHttpException;
@@ -14,9 +14,9 @@ use yii\web\Session;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
 /**
- * SamplesController implements the CRUD actions for Sample model.
+ * AlertController implements the CRUD actions for Alert model.
  */
-class SamplesController extends DefaultController
+class AlertController extends DefaultController
 {
     public function behaviors()
     {
@@ -52,7 +52,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Lists all Sample models.
+     * Lists all Alert models.
      * @return mixed
      */
     public function actionManage()
@@ -60,7 +60,7 @@ class SamplesController extends DefaultController
     	
 
     	
-        $searchModel = new SamplesSearch();
+        $searchModel = new AlertSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('_manage', [
@@ -70,7 +70,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Displays a single Sample model.
+     * Displays a single Alert model.
      * @param integer $id
      * @return mixed
      */
@@ -84,7 +84,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Creates a new Sample model.
+     * Creates a new Alert model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -92,7 +92,7 @@ class SamplesController extends DefaultController
     {
 
     	
-        $model = new Samples();
+        $model = new Alert();
 
         $uploadImage = new UploadImage();
 
@@ -104,7 +104,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('alert', 'Alert Not Saved' )]);
 
                 return $this->render('_create', ['model' => $model]); // error
             }
@@ -121,7 +121,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Updates an existing Sample model.
+     * Updates an existing Alert model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -145,7 +145,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('alert', 'Alert Not Saved' )]);
 
                 return $this->render('_update', ['model' => $model]); // error
             }
@@ -162,7 +162,7 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Deletes an existing Sample model.
+     * Deletes an existing Alert model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -170,7 +170,7 @@ class SamplesController extends DefaultController
     public function actionDelete($id)
     {
 
-        SampleData::deleteAll(['sample_id' => $id]);
+        AlertData::deleteAll(['alert_id' => $id]);
 
         $model = $this->findModel($id);
 
@@ -185,15 +185,15 @@ class SamplesController extends DefaultController
     }
 
     /**
-     * Finds the Sample model based on its primary key value.
+     * Finds the Alert model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Sample the loaded model
+     * @return Alert the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Samples::findOne($id)) !== null) {
+        if (($model = Alert::findOne($id)) !== null) {
 
             return $model;
 

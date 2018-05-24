@@ -2,19 +2,18 @@
 
 namespace kouosl\alert\controllers\backend;
 
-use kouosl\alert\models\AlertData;
-use kouosl\alert\models\UploadImage;
 use Yii;
 use kouosl\alert\models\Alert;
-use kouosl\alert\models\AlertSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UnauthorizedHttpException;
 use yii\web\Session;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
+
 /**
- * AlertController implements the CRUD actions for Alert model.
+ * alertsController implements the CRUD actions for alert model.
  */
 class AlertController extends DefaultController
 {
@@ -45,14 +44,40 @@ class AlertController extends DefaultController
     	parent::init();
     
     }
+	
+    public function actionContent(){
+    	$provider = new ActiveDataProvider([
+			'query' => Content::find(),
+			'pagination' => [
+			'pageSize' => 2,
+			],
+		]);
+		return $this->render('_content', [
+            'dataProvider' => $provider,
+            
+			]);
+    
+    }
 
     public function actionIndex()
     {
-        return $this->actionManage();
+        return $this->actionAlert();
+    }
+    public function actionAlert(){
+    	$provider = new ActiveDataProvider([
+			'query' => Alert::find(),
+			'pagination' => [
+			'pageSize' => 2,
+			],
+		]);
+		return $this->render('alert', [
+			'dataProvider' => $provider,
+			]);
+    
     }
 
     /**
-     * Lists all Alert models.
+     * Lists all alert models.
      * @return mixed
      */
     public function actionManage()
@@ -70,7 +95,7 @@ class AlertController extends DefaultController
     }
 
     /**
-     * Displays a single Alert model.
+     * Displays a single Sample model.
      * @param integer $id
      * @return mixed
      */
@@ -84,7 +109,7 @@ class AlertController extends DefaultController
     }
 
     /**
-     * Creates a new Alert model.
+     * Creates a new Sample model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -121,7 +146,7 @@ class AlertController extends DefaultController
     }
 
     /**
-     * Updates an existing Alert model.
+     * Updates an existing Sample model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -162,7 +187,7 @@ class AlertController extends DefaultController
     }
 
     /**
-     * Deletes an existing Alert model.
+     * Deletes an existing Sample model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -185,7 +210,7 @@ class AlertController extends DefaultController
     }
 
     /**
-     * Finds the Alert model based on its primary key value.
+     * Finds the Sample model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Alert the loaded model

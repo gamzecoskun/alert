@@ -7,16 +7,12 @@ use Yii;
 /**
  * This is the model class for table "alert".
  *
- * @property integer $id
- * @property string $title
- * @property string $description
- * @property string $picture
- *
- * @property data[] $data
+ * @property int $id
+ * @property string $name
+ * @property string $kind
  */
 class Alert extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -31,9 +27,9 @@ class Alert extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'required'],
-            [['description', 'picture'], 'string'],
-            [['title'], 'string', 'max' => 200],
+            [['id', 'name', 'kind'], 'required'],
+            [['id'], 'integer'],
+            [['name', 'kind'], 'string', 'max' => 20],
         ];
     }
 
@@ -44,21 +40,8 @@ class Alert extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'picture' => 'Picture',
+            'name' => 'Name',
+            'kind' => 'Kind',
         ];
-    }
-
-    public function getImagePath(){
-        return sprintf("%s/alert/%s",Yii::getAlias ( '@data' ),$this->picture);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getData()
-    {
-        return $this->hasMany(AlertData::className(), ['alert_id' => 'id']);
     }
 }

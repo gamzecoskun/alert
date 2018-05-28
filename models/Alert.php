@@ -8,13 +8,14 @@ use Yii;
  * This is the model class for table "alert".
  *
  * @property int $id
- * @property string $name
- * @property string $kind
+ * @property string $turu
+ * @property string $icerigi
+ * @property string $ismi
  */
 class Alert extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -22,26 +23,26 @@ class Alert extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'name', 'kind'], 'required'],
-            [['id'], 'integer'],
-            [['name', 'kind'], 'string', 'max' => 20],
+            [['icerigi'], 'string'],
+            [['turu', 'ismi'], 'string', 'max' => 255],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'kind' => 'Kind',
+            'turu' => 'Turu',
+            'icerigi' => 'Icerigi',
+            'ismi' => 'Ismi',
         ];
     }
 }

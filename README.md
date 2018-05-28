@@ -1,7 +1,6 @@
-# sample
+# alert
 Kocaeli university open source lab yii2 sample module
 
-Alert
 Alert modülünü eklemek için öncelikle,
 
 Komut satırında modülümüzü ekleyeceğimiz yere (@vendor/kouosl/) altına geliyoruz. Ardından "git clone https://github.com/gamzecoskun/alert.git" komutunu çalıştırarak modülümüzü projemize indiriyoruz.

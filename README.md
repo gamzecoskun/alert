@@ -26,7 +26,7 @@ Portal klasörünün içerisindeki composer.json dosyasında gerekli yerlere şu
 
 Ekledikten sonra sanal makinaya bağlanarak şu komutları çalıştırıyoruz;
 
-cd /var/www/portal sudo chmod -R 777 vendor/kouosl/Randevu composer update
+cd /var/www/portal sudo chmod -R 777 vendor/kouosl/alert composer update
 
 Son adım olarakda modülümüzde "migrations" klasöründeki .php uzantılı dosyayı kopyalayıyoruz ve portal dizininde "console/migrations/" altına yapıştırıyoruz(klasör yok ise kendimiz oluşturuyoruz). Ardından sanal makinamızda,
 

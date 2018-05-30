@@ -27,11 +27,9 @@ Portal klasörünün içerisindeki composer.json dosyasında gerekli yerlere şu
 Ekledikten sonra sanal makinaya bağlanarak şu komutları çalıştırıyoruz;
 
 cd /var/www/portal sudo chmod -R 777 vendor/kouosl/alert composer update
-
-Son adım olarakda modülümüzde "migrations" klasöründeki .php uzantılı dosyayı kopyalayıyoruz ve portal dizininde "console/migrations/" altına yapıştırıyoruz(klasör yok ise kendimiz oluşturuyoruz). Ardından sanal makinamızda,
-
-php yii migrate
-
+   
+php yii migrate--migrationPath=@vendor/kouosl/alert/migration
+   
 Komutunu çalıştırıyoruz böylelikle veritabanımızı oluşturup örnek bir kayıt ekliyoruz.
 
 Modül kurulumu tamamlanmıştır.

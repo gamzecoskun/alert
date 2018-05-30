@@ -1,5 +1,4 @@
 # alert
-Kocaeli university open source lab yii2 sample module
 
 Alert modülünü eklemek için öncelikle,
 

@@ -38,6 +38,6 @@ Modül kurulumu tamamlanmıştır.
 
 http://portal.kouosl/alert buradan modüle ulaşabilirsiniz.
 
-Modülü kullanırken tarih formatını yıl-ay-gün şeklinde girilmesi gerekmektedir.
+
 
 Gamze Çoşkun - 151307020
